@@ -1,0 +1,53 @@
+name: CI/CD Frontend Deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v3
+
+      - name: Clone Frontend Repository
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/TomAlcarraz/ReactDevops2024.git
+
+      - name: Build React Application
+        working-directory: ./ReactDevops2024  
+        run: |
+          # Configurar Node.js
+          echo "Setting up Node.js"
+          node -v || curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash - 
+          sudo apt-get install -y nodejs
+          echo "Node.js version:"
+          node -v
+
+          # Instalar dependencias y construir la aplicación
+          echo "Installing dependencies"
+          npm install
+
+          echo "Building React application"
+          npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Deploy to S3
+        run: |
+          aws s3 sync ./ReactDevops2024/dist/apps/catalog s3://frontendbucket303898/ --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+
+      - name: Enable Static Website Hosting
+        run: |
+          aws s3 website s3://frontendbucket303898/ --index-document index.html --error-document index.html
