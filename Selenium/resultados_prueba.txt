@@ -1,0 +1,15 @@
+
+Inicio de la prueba - 2024-12-06 20:08:03.567082
+Prueba 1 - Verificacion del titulo: Exito
+Prueba 2 - Verificacion de la URL: Exito
+Prueba 3 - Verificacion de la presencia de un elemento: Exito
+Prueba 4 - Verificacion de visibilidad del boton: Exito
+Prueba 5 - Verificacion de texto: Exito
+Fin de la prueba - 2024-12-06 20:08:04.939648
+Inicio de la prueba - 2024-12-06 20:08:32.631970
+Prueba 1 - Verificacion del titulo: Exito
+Prueba 2 - Verificacion de la URL: Exito
+Prueba 3 - Verificacion de la presencia de un elemento: Exito
+Prueba 4 - Verificacion de visibilidad del boton: Exito
+Prueba 5 - Verificacion de texto: Exito
+Fin de la prueba - 2024-12-06 20:08:34.455851
