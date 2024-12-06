@@ -1,0 +1,40 @@
+name: CI/CD Pipeline OrdersService
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # Job para OrdersService
+  build-and-deploy-orders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Repository
+        uses: actions/checkout@v3
+
+      - name: Clone OrdersService Repo
+        run: git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/FI-ORT-DevOps-305212-303898/DevOps-OrdersService.git
+
+      - name: Build Docker Image for OrdersService
+        run: |
+          docker build -t fiortdevops/ordersservice:latest ./DevOps-OrdersService
+          
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Tag and Push OrdersService Image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: "orders-service"
+          IMAGE_TAG: "latest"
+        run: |
+          docker tag tomalcarraz/ordersservice:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
