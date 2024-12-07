@@ -13,10 +13,10 @@ jobs:
 
       - name: Clone Frontend Repository
         run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/TomAlcarraz/ReactDevops2024.git
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/FI-ORT-DevOps-305212-303898/DevOps-React.git
 
       - name: Build React Application
-        working-directory: ./ReactDevops2024  
+        working-directory: ./DevOps-React  
         run: |
           # Configurar Node.js
           echo "Setting up Node.js"
@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync ./ReactDevops2024/dist/apps/catalog s3://frontendbucket303898/ --delete
+          aws s3 sync ./DevOps-React/dist/apps/catalog s3://frontendbucket303898/ --delete
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
