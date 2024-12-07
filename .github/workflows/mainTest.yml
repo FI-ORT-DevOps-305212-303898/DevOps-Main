@@ -144,3 +144,37 @@ jobs:
         run: |
           docker tag fiortdevops/shippingservice:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          
+  # Job para React Frontend        
+  build-and-deploy-react:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout del repositorio principal
+      - name: Checkout Main Repository
+        uses: actions/checkout@v3
+
+      # 2. Clonar el repositorio del front
+      - name: Clone React Frontend Repo
+        run: git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/FI-ORT-DevOps-305212-303898/DevOps-React.git
+
+      # 3. Construcción y validación del aplicativo React
+      - name: Build and Test React Application
+        working-directory: ./DevOps-React  # Ir al directorio del frontend
+        run: |
+          # Configurar la versión de Node.js
+          echo "Setting up Node.js"
+          node -v || curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          echo "Node.js version:"
+          node -v
+
+          # Instalar dependencias y construir la aplicación
+          echo "Installing dependencies"
+          npm install
+
+          echo "Building React application"
+          npm run build
+
+          # Ejecutar pruebas (opcional, recomendado)
+          echo "Running tests"
+          npm test -- --watchAll=false
