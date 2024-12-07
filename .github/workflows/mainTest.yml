@@ -51,7 +51,7 @@ jobs:
 
       - name: Build Docker Image for PaymentsService
         run: |
-          docker build -t fiortdevops/ordersservice:latest ./DevOps-PaymentsService
+          docker build -t fiortdevops/paymentsservice:latest ./DevOps-PaymentsService
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
