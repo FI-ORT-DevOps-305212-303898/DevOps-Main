@@ -1,4 +1,4 @@
-name: CI/CD Pipeline OrdersService
+name: CI Pipeline Test
 
 on:
   workflow_dispatch:
