@@ -2,44 +2,88 @@ name: Deploy to EKS
 
 on:
   workflow_dispatch:
-    inputs:
-      service:
-        description: "Service to deploy"
-        required: false
-        default: "all" # Puedes especificar uno o desplegar todos.
 
 jobs:
-  deploy:
+  # Job para OrdersService
+  deploy-orders-service:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: [orders-service, payments-service, products-service, shipping-service]
-
     steps:
-      # Step 1: Clonar el repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Configurar credenciales AWS
       - name: Configure AWS CLI
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: us-east-1  # Cambia según la región que uses
+          aws-region: us-east-1
 
-      # Step 3: Autenticación con EKS
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
 
-      # Step 4: Desplegar servicios a EKS
-      - name: Deploy to EKS
-        run: |
-          if [[ "${{ matrix.service }}" == "all" ]]; then
-            for svc in orders-service payments-service products-service shipping-service; do
-              kubectl apply -f k8s/$svc-deployment.yaml
-            done
-          else
-            kubectl apply -f k8s/${{ matrix.service }}-deployment.yaml
-          fi
+      - name: Deploy Orders Service
+        run: kubectl apply -f k8s/orders-service-deployment.yaml
+
+  # Job para PaymentsService
+  deploy-payments-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Authenticate with EKS
+        run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
+
+      - name: Deploy Payments Service
+        run: kubectl apply -f k8s/payments-service-deployment.yaml
+
+  # Job para ProductsService
+  deploy-products-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Authenticate with EKS
+        run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
+
+      - name: Deploy Products Service
+        run: kubectl apply -f k8s/products-service-deployment.yaml
+
+  # Job para ShippingService
+  deploy-shipping-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Authenticate with EKS
+        run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
+
+      - name: Deploy Shipping Service
+        run: kubectl apply -f k8s/shipping-service-deployment.yaml
