@@ -18,9 +18,15 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Get Cluster Name
-        id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
+      - name: Set Cluster Name Based on Environment
+        id: set-cluster
+        run: |
+          if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_MAIN }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
+          else
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
@@ -42,9 +48,15 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Get Cluster Name
-        id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
+      - name: Set Cluster Name Based on Environment
+        id: set-cluster
+        run: |
+          if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_MAIN }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
+          else
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
@@ -66,9 +78,15 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Get Cluster Name
-        id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
+      - name: Set Cluster Name Based on Environment
+        id: set-cluster
+        run: |
+          if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_MAIN }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
+          else
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
@@ -90,9 +108,15 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Get Cluster Name
-        id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
+      - name: Set Cluster Name Based on Environment
+        id: set-cluster
+        run: |
+          if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_MAIN }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
+          else
+            echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
