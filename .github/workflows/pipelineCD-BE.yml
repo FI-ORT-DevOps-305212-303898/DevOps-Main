@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Job para OrdersService
   deploy-orders-service:
     runs-on: ubuntu-latest
     steps:
@@ -19,13 +18,16 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
+      - name: Get Cluster Name
+        id: get-cluster-name
+        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+
       - name: Authenticate with EKS
-        run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
+        run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
 
       - name: Deploy Orders Service
         run: kubectl apply -f k8s/orders-service-deployment.yaml
 
-  # Job para PaymentsService
   deploy-payments-service:
     runs-on: ubuntu-latest
     steps:
@@ -40,13 +42,16 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
+      - name: Get Cluster Name
+        id: get-cluster-name
+        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+
       - name: Authenticate with EKS
-        run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
+        run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
 
       - name: Deploy Payments Service
         run: kubectl apply -f k8s/payments-service-deployment.yaml
 
-  # Job para ProductsService
   deploy-products-service:
     runs-on: ubuntu-latest
     steps:
@@ -61,13 +66,16 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
+      - name: Get Cluster Name
+        id: get-cluster-name
+        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+
       - name: Authenticate with EKS
-        run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
+        run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
 
       - name: Deploy Products Service
         run: kubectl apply -f k8s/products-service-deployment.yaml
 
-  # Job para ShippingService
   deploy-shipping-service:
     runs-on: ubuntu-latest
     steps:
@@ -82,8 +90,12 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
+      - name: Get Cluster Name
+        id: get-cluster-name
+        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+
       - name: Authenticate with EKS
-        run: aws eks update-kubeconfig --region us-east-1 --name devops-cluster
+        run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
 
       - name: Deploy Shipping Service
         run: kubectl apply -f k8s/shipping-service-deployment.yaml
