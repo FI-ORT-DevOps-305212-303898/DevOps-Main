@@ -20,7 +20,7 @@ jobs:
 
       - name: Get Cluster Name
         id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
@@ -44,7 +44,7 @@ jobs:
 
       - name: Get Cluster Name
         id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
@@ -68,7 +68,7 @@ jobs:
 
       - name: Get Cluster Name
         id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
@@ -92,7 +92,7 @@ jobs:
 
       - name: Get Cluster Name
         id: get-cluster-name
-        run: echo "CLUSTER_NAME=$(terraform output -raw eks_cluster_name)" >> $GITHUB_ENV
+        run: echo "CLUSTER_NAME=$(terraform output eks_cluster_name)" >> $GITHUB_ENV
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
