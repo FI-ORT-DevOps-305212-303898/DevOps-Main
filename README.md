@@ -149,6 +149,10 @@ Ubicación del state de terraform en s3 bucket
 
 ![capturaTerraform5](Imagenes/s3_3.png)
 
+Una vez que querramos realizar el despliegue a EKS por github actions debemos escribir el nombre correspondiente al ambiente que armamos para terraform:
+
+![capturaTerraform6](Imagenes/workflowDeployEks.png)
+
 
 ## Tarea realizada con servicios serverless:
 
