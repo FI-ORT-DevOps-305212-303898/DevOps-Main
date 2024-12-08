@@ -26,6 +26,7 @@ jobs:
       - name: Debug Inputs
         run: echo "Environment:${{ github.event.inputs.environment }}"
 
+
       - name: Set Cluster Name Based on Environment
         id: set-cluster
         run: |
@@ -35,6 +36,9 @@ jobs:
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
+          fi
+
+
 
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
@@ -68,7 +72,8 @@ jobs:
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
-
+          fi
+          
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
 
@@ -101,7 +106,8 @@ jobs:
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
-
+          fi
+          
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
 
@@ -134,7 +140,8 @@ jobs:
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_DEV }}" >> $GITHUB_ENV
-
+          fi
+          
       - name: Authenticate with EKS
         run: aws eks update-kubeconfig --region us-east-1 --name ${{ env.CLUSTER_NAME }}
 
