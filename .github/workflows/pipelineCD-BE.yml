@@ -2,6 +2,11 @@ name: Deploy to EKS
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to (main/test/dev)'
+        required: true
+        default: 'dev'
 
 jobs:
   deploy-orders-service:
@@ -17,6 +22,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
+
+      - name: Debug Inputs
+        run: echo "Environment: ${{ github.event.inputs.environment }}"
 
       - name: Set Cluster Name Based on Environment
         id: set-cluster
@@ -48,6 +56,9 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
+      - name: Debug Inputs
+        run: echo "Environment: ${{ github.event.inputs.environment }}"
+
       - name: Set Cluster Name Based on Environment
         id: set-cluster
         run: |
@@ -78,6 +89,9 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
+      - name: Debug Inputs
+        run: echo "Environment: ${{ github.event.inputs.environment }}"
+
       - name: Set Cluster Name Based on Environment
         id: set-cluster
         run: |
@@ -107,6 +121,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
+
+      - name: Debug Inputs
+        run: echo "Environment: ${{ github.event.inputs.environment }}"
 
       - name: Set Cluster Name Based on Environment
         id: set-cluster
