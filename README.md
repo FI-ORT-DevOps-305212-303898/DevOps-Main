@@ -143,6 +143,12 @@ terraform plan
 
 terraform apply
 
+Ubicación del state de terraform en s3 bucket
+
+![capturaTerraform4](Imagenes/s3.png)
+
+![capturaTerraform5](Imagenes/s3_3.png)
+
 
 ## Tarea realizada con servicios serverless:
 
