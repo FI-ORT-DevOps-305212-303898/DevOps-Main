@@ -30,6 +30,11 @@ Las credenciales de AWS son para manejar el acceso a los servicios de Amazon y h
 
 
 ## Manejo de repositorios:
+Para este trabajo se define un esquema claro y organizado que permite la gestión eficiente de repositorios a través de un flujo de trabajo estructurado.
+
+Para los repositorios de desarrollo, se utilizó una estrategia basada en GitFlow adaptada. Este enfoque define ramas estables (Main, Test, Bugfix, y Dev) y ramas efímeras creadas según la necesidad (por ejemplo, Feature 1, Feature 2 y Hotfix). Estas ramas efímeras tienen el compromiso de integrar sus cambios en las ramas superiores mediante estrategias claras de fusión o Cherry Pick.
+
+A continuación, se adjunta el diagrama del flujo utilizado:
 ![capturaRepositorios1](Imagenes/GitflowRepositorio.png)
 
 
