@@ -1,4 +1,4 @@
-name: Deploy to EKS
+name: CD Pipeline BE
 
 on:
   workflow_dispatch:
