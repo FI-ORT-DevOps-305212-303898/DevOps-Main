@@ -3,7 +3,7 @@ name: CD Pipeline BE
 on:
   workflow_run:
     workflows:
-      - CI Pipeline Test
+      - CI Pipeline BE
     types:
       - completed
 
