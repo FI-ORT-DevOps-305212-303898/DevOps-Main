@@ -27,8 +27,8 @@ jobs:
         run: |
           echo "Setting environment..."
           if [[ -z "${{ github.event.inputs.environment }}" ]]; then
-            echo "Environment not provided. Defaulting to 'dev'."
-            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+            echo "Environment not provided. Defaulting to 'main'."
+            echo "ENVIRONMENT=main" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
           fi    
@@ -75,8 +75,8 @@ jobs:
         run: |
           echo "Setting environment..."
           if [[ -z "${{ github.event.inputs.environment }}" ]]; then
-            echo "Environment not provided. Defaulting to 'dev'."
-            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+            echo "Environment not provided. Defaulting to 'main'."
+            echo "ENVIRONMENT=main" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
           fi    
@@ -120,8 +120,8 @@ jobs:
         run: |
           echo "Setting environment..."
           if [[ -z "${{ github.event.inputs.environment }}" ]]; then
-            echo "Environment not provided. Defaulting to 'dev'."
-            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+            echo "Environment not provided. Defaulting to 'main'."
+            echo "ENVIRONMENT=main" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
           fi
@@ -165,8 +165,8 @@ jobs:
         run: |
           echo "Setting environment..."
           if [[ -z "${{ github.event.inputs.environment }}" ]]; then
-            echo "Environment not provided. Defaulting to 'dev'."
-            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+            echo "Environment not provided. Defaulting to 'main'."
+            echo "ENVIRONMENT=main" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
           fi
