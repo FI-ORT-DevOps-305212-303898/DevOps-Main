@@ -28,6 +28,8 @@ El repositorio "[DevOps-Main](https://github.com/FI-ORT-DevOps-305212-303898/Dev
 
 Las credenciales de AWS son para manejar el acceso a los servicios de Amazon y hacer uso de las tecnologías, mientras que el de GH permite que determinados workflows en el repositorio principal tengan acceso a los demás repositorios del BE y FE. Además, los secrets CLUSTER_NAME_DEV, CLUSTER_NAME_TEST y CLUSTER_NAME_MAIN son importantes para el manejo de nuestro workflow de deploy a EKS. Por último, el token de sonar permite realizar el análisis de código estático en SonarCloud.
 
+Link a nuestra organización github: "[DevOps-Organization](https://github.com/FI-ORT-DevOps-305212-303898)"
+
 
 ## Manejo de repositorios:
 Para este trabajo se define un esquema claro y organizado que permite la gestión eficiente de repositorios a través de un flujo de trabajo estructurado.
