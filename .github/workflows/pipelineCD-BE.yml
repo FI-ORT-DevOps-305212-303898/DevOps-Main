@@ -1,12 +1,11 @@
 name: CD Pipeline BE
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy to (main/test/dev)'
-        required: true
-        default: 'dev'
+  workflow_run:
+    workflows:
+      - CI Pipeline Test
+    types:
+      - completed
 
 jobs:
   deploy-orders-service:
