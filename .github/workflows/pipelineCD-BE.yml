@@ -41,7 +41,7 @@ jobs:
         id: set-cluster
         run: |
           if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
-            echo "CLUSTER_NAME=${{ main-eks-cluster }}" >> $GITHUB_ENV
+            echo "CLUSTER_NAME=main-eks-cluster" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
@@ -88,7 +88,7 @@ jobs:
         id: set-cluster
         run: |
           if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
-            echo "CLUSTER_NAME=${{ main-eks-cluster }}" >> $GITHUB_ENV
+            echo "CLUSTER_NAME=main-eks-cluster" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
@@ -133,7 +133,7 @@ jobs:
         id: set-cluster
         run: |
           if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
-            echo "CLUSTER_NAME=${{ main-eks-cluster }}" >> $GITHUB_ENV
+            echo "CLUSTER_NAME=main-eks-cluster" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
@@ -178,7 +178,7 @@ jobs:
         id: set-cluster
         run: |
           if [[ "${{ github.event.inputs.environment }}" == "main" ]]; then
-            echo "CLUSTER_NAME=${{ main-eks-cluster }}" >> $GITHUB_ENV
+            echo "CLUSTER_NAME=main-eks-cluster" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.environment }}" == "test" ]]; then
             echo "CLUSTER_NAME=${{ secrets.CLUSTER_NAME_TEST }}" >> $GITHUB_ENV
           else
