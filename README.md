@@ -228,3 +228,4 @@ Hicimos uso de dicha tecnología con el fin de generar ejemplos que nos ayudaran
 
 Debido a limitaciones en github actions, no pudimos resolver que el workflow "CD Pipeline BE" se adapte dinámicamente para que el despliegue al cluster se genere con el nombre de la rama actual desde la que estamos realizando el deploy. En su lugar, está hardcodeado para funcionar siempre desde main.
 El terraform está preparado para desplegar 3 o n ambientes sin problema, por lo cual lo ideal en un futuro sería encontrar un fix que nos permita mantener la dinamicidad del pipeline entero.
+Además, agregar que debido a que hacemos uso de terraform a través de vscode, es necesario realizar la ejecución de la infraestructura terraform previo a la ejecución de los pipelines de CI/CD. 
