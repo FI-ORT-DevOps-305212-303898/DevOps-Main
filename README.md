@@ -44,7 +44,7 @@ A continuación, se adjunta el diagrama del flujo utilizado:
 
 ![tecnologia2](Imagenes/Tecnologia2.png)
 
-La solución adoptada se basa en pipelines CI/CD automatizado, diseñado para el despliegue eficiente de microservicios en una infraestructura moderna. A continuación, describimos cómo cada componente contribuye al flujo de trabajo:
+La solución adoptada se basa en pipelines CI/CD automatizados, diseñado para el despliegue eficiente de microservicios en una infraestructura moderna. A continuación, describimos cómo cada componente contribuye al flujo de trabajo:
 
 #### Integración continua (CI):
 
