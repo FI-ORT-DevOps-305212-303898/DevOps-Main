@@ -46,33 +46,33 @@ A continuación, se adjunta el diagrama del flujo utilizado:
 
 La solución adoptada se basa en pipelines CI/CD automatizado, diseñado para el despliegue eficiente de microservicios en una infraestructura moderna. A continuación, describimos cómo cada componente contribuye al flujo de trabajo:
 
-####Integración continua (CI):
+#### Integración continua (CI):
 
 El código fuente se aloja en GitHub, donde los desarrolladores colaboran y gestionan los cambios a través de ramas.
 GitHub Actions automatiza la construcción, pruebas y validaciones para cada microservicio:
--Backend Microservicios: Cada microservicio (Orders, Payments, Products, Shipping) tiene un job dedicado que:
-Clona el repositorio.
-Construye una imagen Docker con las dependencias y configuraciones necesarias.
-Sube las imágenes al Amazon Elastic Container Registry (ECR).
--Frontend: El repositorio del frontend se clona y se construye la aplicación React. El resultado se despliega como un sitio estático en Amazon S3.
+- Backend Microservicios: Cada microservicio (Orders, Payments, Products, Shipping) tiene un job dedicado que:
+  - Clona el repositorio.
+  - Construye una imagen Docker con las dependencias y configuraciones necesarias.
+  - Sube las imágenes al Amazon Elastic Container Registry (ECR).
+- Frontend: El repositorio del frontend se clona y se construye la aplicación React. El resultado se despliega como un sitio estático en Amazon S3.
 
-####Pruebas (Test):
+#### Pruebas (Test):
 
-SonarCloud evalúa la calidad del código, verificando estándares, cobertura de pruebas y detectando vulnerabilidades.
-Selenium ejecuta pruebas  para garantizar que las funcionalidades críticas se comporten correctamente en los entornos de despliegue.
+- SonarCloud evalúa la calidad del código, verificando estándares, cobertura de pruebas y detectando vulnerabilidades.
+- Selenium ejecuta pruebas  para garantizar que las funcionalidades críticas se comporten correctamente en los entornos de despliegue.
 
-####Entrega continua (CD):
+#### Entrega continua (CD):
 
 Una vez validadas las imágenes Docker y construcciones de React, GitHub Actions realiza los despliegues:
--Backend: Los microservicios son desplegados en un clúster Amazon Elastic Kubernetes Service (EKS). Las configuraciones para cada microservicio se gestionan mediante manifiestos de Kubernetes (k8s/orders-service-deployment.yaml, etc.).
--Frontend: La aplicación React se sincroniza con un bucket S3. Este bucket está configurado para servir contenido estático con soporte de index.html como documento principal.
+- Backend: Los microservicios son desplegados en un clúster Amazon Elastic Kubernetes Service (EKS). Las configuraciones para cada microservicio se gestionan mediante manifiestos de Kubernetes (k8s/orders-service-deployment.yaml, etc.).
+- Frontend: La aplicación React se sincroniza con un bucket S3. Este bucket está configurado para servir contenido estático con soporte de index.html como documento principal.
 
-####Serverless y orquestación:
-AWS Lambda: Se realiza tarea serverless de un bot, que avisa ante cambios en nuestros repositorios ECR.
-AWS EventBridge: Se crea regla que se encarga de enviarle un evento a Lambda como objeto JSON.
+#### Serverless y orquestación:
+- AWS Lambda: Se realiza tarea serverless de un bot, que avisa ante cambios en nuestros repositorios ECR.
+- AWS EventBridge: Se crea regla que se encarga de enviarle un evento a Lambda como objeto JSON.
 
-####Gestión de infraestructura:
-Terraform gestiona toda la infraestructura como código (IaC), asegurando que los recursos de AWS (EKS, S3, ECR, etc.) estén configurados de forma consistente y reproducible.
+#### Gestión de infraestructura:
+- Terraform gestiona toda la infraestructura como código (IaC), asegurando que los recursos de AWS (EKS, S3, ECR, etc.) estén configurados de forma consistente y reproducible.
 
 
 ## Evolución de Kanban en Jira a lo largo de la realización del obligatorio:
