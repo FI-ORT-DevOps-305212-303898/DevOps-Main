@@ -29,6 +29,10 @@ El repositorio "[DevOps-Main](https://github.com/FI-ORT-DevOps-305212-303898/Dev
 Las credenciales de AWS son para manejar el acceso a los servicios de Amazon y hacer uso de las tecnologías, mientras que el de GH permite que determinados workflows en el repositorio principal tengan acceso a los demás repositorios del BE y FE. Por último, el token de sonar permite realizar el análisis de código estático en SonarCloud.
 
 
+## Manejo de repositorios:
+![capturaRepositorios1](Imagenes/GitflowRepositorio.png)
+
+
 ## Evolución de Kanban en Jira a lo largo de la realización del obligatorio:
 
 ![capturaKanban1](Imagenes/kanban1.png)
