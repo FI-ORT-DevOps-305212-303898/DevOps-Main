@@ -86,6 +86,13 @@ python test_selenium.py
 Las 5 pruebas realizadas devolvieron un mensaje de éxito; estas pruebas son relativamente sencillas pero nos permiten asegurarnos de que nuestro sitio web se desplegó de forma correcta en la forma en que esperábamos (con el título correcto, en la URL esperada, que tenga la presencia de determinados elementos que ejemplifican un despliegue como el esperado sin errores de visualización/en la interfaz) y que los tiempos de respuesta son los deseados/apropiados. En base a los test verificamos que no sólo las pruebas fueron un éxito en este caso, sino que además el tiempo de respuesta fue prácticamente inmediato; lo cual cumple con nuestras expectativas. 
 
 
+## Diagrama de solución adoptada:
+
+![tecnologia1](Imagenes/Tecnologia.png)
+
+![tecnologia2](Imagenes/Tecnologia2.png)
+
+
 ## Análisis de los resultados de código estático en SonarCloud:
 
 - Analizamos 6 proyectos (nuestros 4 repositorios de BE, nuestro único repositorio de FE y finalmente el repositorio principal de devops). 
@@ -180,11 +187,6 @@ A continuación se adjuntarán capturas relevantes:
 ![capturaServerless4](Imagenes/ServerlessFatherBot.png)
 
 ![capturaServerless5](Imagenes/ServerlessBot.png)
-
-
-![tecnologia1](Imagenes/Tecnologia.png)
-
-![tecnologia2](Imagenes/Tecnologia2.png)
 
 
 ## Inteligencia artificial generativa: 
