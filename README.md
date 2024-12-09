@@ -222,3 +222,9 @@ A continuación se adjuntarán capturas relevantes:
 ## Inteligencia artificial generativa: 
 
 Hicimos uso de dicha tecnología con el fin de generar ejemplos que nos ayudaran a comprender como aproximarnos a la realidad planteada por el obligatorio; todo código generado fue utilizado de maneras transformativas y funcionó a modo de apoyo en casos concretos. Por ejemplo, en la corrección de archivos como outputs.tf o terraform.tfvars de terraform para asegurarnos que estabamos realizando una correcta configuración de los mismos. 
+
+
+## Posibles limitaciones:
+
+Debido a limitaciones en github actions, no pudimos resolver que el workflow "CD Pipeline BE" se adapte dinámicamente para que el despliegue al cluster se genere con el nombre de la rama actual desde la que estamos realizando el deploy. En su lugar, está hardcodeado para funcionar siempre desde main.
+El terraform está preparado para desplegar 3 o n ambientes sin problema, por lo cual lo ideal en un futuro sería encontrar un fix que nos permita mantener la dinamicidad del pipeline entero.
