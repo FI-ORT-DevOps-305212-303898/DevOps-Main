@@ -1,7 +1,11 @@
 name: CI Pipeline BE
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+      - 'dev'
+      - 'test'
 
 jobs:
   # Job para OrdersService
