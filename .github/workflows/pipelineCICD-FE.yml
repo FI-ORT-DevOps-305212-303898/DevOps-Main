@@ -1,7 +1,11 @@
 name: CI/CD Frontend Deployment
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+      - 'dev'
+      - 'test'
 
 jobs:
   build-and-deploy-frontend:
