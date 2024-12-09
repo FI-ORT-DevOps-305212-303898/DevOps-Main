@@ -24,9 +24,9 @@ Con el fin de realizar un uso apropiado de los conocimientos adquiridos a lo lar
 
 ## Secrets y credenciales requeridas para un correcto uso de los repositorios:
 
-El repositorio "[DevOps-Main](https://github.com/FI-ORT-DevOps-305212-303898/DevOps-Main)" debe tener los secrets "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN", "GH_TOKEN" y "SONAR_TOKEN" actualizados para un correcto funcionamiento. 
+El repositorio "[DevOps-Main](https://github.com/FI-ORT-DevOps-305212-303898/DevOps-Main)" debe tener los secrets "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN", "GH_TOKEN", "CLUSTER_NAME_DEV", "CLUSTER_NAME_TEST", "CLUSTER_NAME_MAIN"  y "SONAR_TOKEN" actualizados para un correcto funcionamiento. 
 
-Las credenciales de AWS son para manejar el acceso a los servicios de Amazon y hacer uso de las tecnologías, mientras que el de GH permite que determinados workflows en el repositorio principal tengan acceso a los demás repositorios del BE y FE. Por último, el token de sonar permite realizar el análisis de código estático en SonarCloud.
+Las credenciales de AWS son para manejar el acceso a los servicios de Amazon y hacer uso de las tecnologías, mientras que el de GH permite que determinados workflows en el repositorio principal tengan acceso a los demás repositorios del BE y FE. Además, los secrets CLUSTER_NAME_DEV, CLUSTER_NAME_TEST y CLUSTER_NAME_MAIN son importantes para el manejo de nuestro workflow de deploy a EKS. Por último, el token de sonar permite realizar el análisis de código estático en SonarCloud.
 
 
 ## Manejo de repositorios:
